@@ -10,6 +10,6 @@ public interface ServerService {
     Server ping(String ipAddress);
     Collection<Server> list(int limit);
     Server get(Long id);
-    Server update (Server update);
+    Server update (Server server);
     Boolean delete(Long id);
 }
