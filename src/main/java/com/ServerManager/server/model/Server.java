@@ -1,13 +1,17 @@
 package com.ServerManager.server.model;
 
 import com.ServerManager.server.Enums.Status;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Data
+@SuperBuilder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Server {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
