@@ -10,8 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Map;
+
+import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 
 @RestController
 @RequestMapping("/server")
@@ -78,5 +84,10 @@ public class ServerController {
                         .message(isDeleted==Boolean.TRUE ?"Deleted server " : " failed to Delete Server")
                         .build()
         );
+    }
+
+    @GetMapping(path = "/images/{fileName}", produces = IMAGE_PNG_VALUE)
+    public byte[] getServerImage(@PathVariable("fileName") String fileName) throws IOException {
+        return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"Documents/images/"+fileName));
     }
 }

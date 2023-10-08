@@ -69,6 +69,13 @@ public class ServerServiceImpl implements ServerService {
         serverRepo.deleteById(id);
         return Boolean.TRUE;
     }
+
+    /**
+     * it will generate url like , http:localHost:8080/server/images/server*.png
+     * so the request is mapped to  @GetMapping(path = "/images/{fileName}", produces = IMAGE_PNG_VALUE) in
+     * ServerController file
+     * @return
+     */
     private String setServerImageUrl() {
         String[] imageNames = {"server1.png","server2.png","server3.png"};
         return ServletUriComponentsBuilder.fromCurrentContextPath().path("/server/images/"+imageNames[new Random().nextInt(4)]).toUriString();
