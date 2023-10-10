@@ -6,6 +6,7 @@ import com.ServerManager.server.model.Response;
 import com.ServerManager.server.model.Server;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 @RequestMapping("/server")
 @RequiredArgsConstructor
 public class ServerController {
+    @Autowired
     ServerServiceImpl serverServiceImpl;
     @GetMapping("/list")
     public ResponseEntity<Response> getServers() {
